@@ -5,9 +5,10 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class MenberPanel {
+public class MenberPanel extends JPanel{
     public MenberPanel(MainFrame frame) {
         //レイアウトに新しいGridLayout(3, 2)
     	setLayout(new GridLayout(3,2));
