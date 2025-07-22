@@ -5,9 +5,10 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class DVDPanel {
+public class DVDPanel extends JPanel{
     public DVDPanel(MainFrame frame) {
         //レイアウトに新しいGridLayout(3, 2)
     	setLayout(new GridLayout(3,2));
@@ -31,4 +32,6 @@ public class DVDPanel {
     	add(registerBtn);
     	add(backBtn);
     }
+
+
 }
