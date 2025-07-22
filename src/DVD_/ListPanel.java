@@ -30,4 +30,5 @@ public class ListPanel extends JFrame{
         //パネルに部品の追加
         add(new JScrollPane(area),BorderLayout.CENTER);
         add(TOPbtn,BorderLayout.SOUTH);
+    }
 }
