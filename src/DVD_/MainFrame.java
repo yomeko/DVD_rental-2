@@ -10,7 +10,7 @@ public class MainFrame {
 	    private JPanel cardPanel;
 
 	    public MainFrame() {
-	        setTitle("図書館システム");
+	        setTitle("DVDレンタルシステム");
 	        setDefaultCloseOperation(EXIT_ON_CLOSE);
 	        setSize(600, 400);
 
@@ -18,9 +18,9 @@ public class MainFrame {
 	        cardPanel = new JPanel(cardLayout);
 
 	        // すべての機能パネルを登録
-	        cardPanel.add(new TopPanel(this), "TOP");
-	        cardPanel.add(new BookPanel(this), "BOOK");
-	        cardPanel.add(new MemberPanel(this), "MEMBER");
+	        cardPanel.add(new TOPPanel(this), "TOP");
+	        cardPanel.add(new DVDPanel(this), "DVD");
+	        cardPanel.add(new MenberPanel(this), "MEMBER");
 	        cardPanel.add(new LendPanel(this), "LEND");
 	        cardPanel.add(new ReturnPanel(this), "RETURN");
 	        cardPanel.add(new ListPanel(this), "LIST");
