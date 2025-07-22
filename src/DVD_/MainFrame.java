@@ -2,10 +2,11 @@ package DVD_;
 
 import java.awt.CardLayout;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-public class MainFrame {
+public class MainFrame extends JFrame{
 	   private CardLayout cardLayout;
 	    private JPanel cardPanel;
 
