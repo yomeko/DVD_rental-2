@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import jp.ac.kcs.swing.library.MainFrame;
 
 public class TOPPanel {
-	  public TopPanel(MainFrame frame) {
+	  public TOPPanel(MainFrame frame) {
 	       setLayout(new GridLayout(6, 1, 10, 10));
 
 	       // 「DVDの登録」ボタンを作成し、クリックされたら "BOOK" パネルに切り替える
