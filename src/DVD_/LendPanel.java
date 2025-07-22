@@ -18,7 +18,7 @@ public class LendPanel extends JPanel {
     	JButton backBtn=new JButton("TOPへ戻る");
     	//DB実行
     	lendBtn.addActionListener(e -> {
-        	DB.lenddvd(idField.getText(),( CodeField.getText()));
+        	DB.lendDVD(idField.getText(),( CodeField.getText()));
         	JOptionPane.showMessageDialog(this, "貸出しました。");
         	});
         //TOP戻る
