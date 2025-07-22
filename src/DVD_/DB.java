@@ -54,7 +54,7 @@ public class DB {
 		}
 	}
 	
-	//DVDの返却済み
+	//DVDを返却済み状態に更新する処理
 	
 	public static void returnDVD(String code) {
 		try(Connection conn =DriverManager.getConnection(URL,USER,PASS);
