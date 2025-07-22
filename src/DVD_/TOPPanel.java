@@ -3,10 +3,9 @@ package DVD_;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
-import jp.ac.kcs.swing.library.MainFrame;
-
-public class TOPPanel {
+public class TOPPanel  extends JFrame{
 	  public TOPPanel(MainFrame frame) {
 	       setLayout(new GridLayout(6, 1, 10, 10));
 
@@ -36,4 +35,5 @@ public class TOPPanel {
 	        add(lendButton);
 	        add(returnButton);
 	        add(listButton);
+	  }
 }
