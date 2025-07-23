@@ -21,7 +21,7 @@ public class MainFrame extends JFrame{
 	        // すべての機能パネルを登録
 	        cardPanel.add(new TOPPanel(this), "TOP");
 	        cardPanel.add(new DVDPanel(this), "DVD");
-	        cardPanel.add(new MenberPanel(this), "MEMBER");
+	        cardPanel.add(new MenberPanel(this), "MENBER");
 	        cardPanel.add(new LendPanel(this), "LEND");
 	        cardPanel.add(new ReturnPanel(this), "RETURN");
 	        cardPanel.add(new ListPanel(this), "LIST");
