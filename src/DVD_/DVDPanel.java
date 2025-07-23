@@ -20,7 +20,6 @@ public class DVDPanel extends JPanel{
     	JTextField titleField = new JTextField();  
     	JButton registerBtn  = new JButton("登録");
     	JButton backBtn =new JButton("TOPへ戻る");
-    	JButton LentBtn = new JButton("貸出一覧");
     	
     	//登録ボタンが押されたらIDとタイトル
     	registerBtn.addActionListener(e -> {
@@ -37,7 +36,6 @@ public class DVDPanel extends JPanel{
     	add(titleField);
     	add(registerBtn);
     	add(backBtn);
-    	add(LentBtn);
     }
 
 
