@@ -16,7 +16,7 @@ public class TOPPanel  extends JFrame{
 
 	       // 「会員登録」ボタンの設定　インスタンス名memberButton
 	       JButton memberButton = new JButton("会員登録");
-	       memberButton.addActionListener(e -> frame.showPanel("MEMBER"));
+	       memberButton.addActionListener(e -> frame.showPanel("MENBER"));
 
 	       // 「貸出処理」ボタンの設定　インスタンス名lendButton
 	       JButton lendButton = new JButton("貸出処理");
