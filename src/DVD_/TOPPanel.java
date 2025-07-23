@@ -12,7 +12,7 @@ public class TOPPanel  extends JFrame{
 	       // 「DVDの登録」ボタンを作成し、クリックされたら "BOOK" パネルに切り替える
 	       //  インスタンス名bookButton
 	       JButton bookButton = new JButton("DVDの登録");
-	       bookButton.addActionListener(e -> frame.showPanel("BOOK"));
+	       bookButton.addActionListener(e -> frame.showPanel("DVD"));
 
 	       // 「会員登録」ボタンの設定　インスタンス名memberButton
 	       JButton memberButton = new JButton("会員登録");
