@@ -19,9 +19,9 @@ public class ListPanel extends JPanel{
 
         //Listを作成string型
         area.setEditable(false);
-        List<String> books = DB.getLentDVDs();
-        for(String book : books) {
-        	area.append(book + "\n");
+        List<String> DVDs = DB.getLentDVDs();
+        for(String DVD : DVDs) {
+        	area.append(DVD + "\n");
         }
 
         //TOP戻るボタン

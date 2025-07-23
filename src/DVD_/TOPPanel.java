@@ -3,20 +3,20 @@ package DVD_;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class TOPPanel  extends JFrame{
+public class TOPPanel  extends JPanel{
 	  public TOPPanel(MainFrame frame) {
 	       setLayout(new GridLayout(6, 1, 10, 10));
 
 	       // 「DVDの登録」ボタンを作成し、クリックされたら "BOOK" パネルに切り替える
 	       //  インスタンス名bookButton
 	       JButton bookButton = new JButton("DVDの登録");
-	       bookButton.addActionListener(e -> frame.showPanel("BOOK"));
+	       bookButton.addActionListener(e -> frame.showPanel("DVD"));
 
 	       // 「会員登録」ボタンの設定　インスタンス名memberButton
 	       JButton memberButton = new JButton("会員登録");
-	       memberButton.addActionListener(e -> frame.showPanel("MEMBER"));
+	       memberButton.addActionListener(e -> frame.showPanel("MENBER"));
 
 	       // 「貸出処理」ボタンの設定　インスタンス名lendButton
 	       JButton lendButton = new JButton("貸出処理");
