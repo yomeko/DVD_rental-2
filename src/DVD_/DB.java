@@ -12,7 +12,7 @@ import java.util.List;
 public class DB {
 	//DBアクセス＆ユーザー名とパスワード
 	
-	private static final String URL = "jdbc:mysql://localhost/DVD_shop";
+	private static final String URL = "jdbc:mysql://localhost/dvd_shop";
 	private static final String USER ="root";
 	private static final String PASS ="";
 	
