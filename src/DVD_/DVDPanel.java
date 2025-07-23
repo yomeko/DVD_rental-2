@@ -1,5 +1,6 @@
 package DVD_;
 
+import java.awt.Component;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -9,7 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class DVDPanel extends JPanel{
-    public DVDPanel(MainFrame frame) {
+    private static final Component LentBtn = null;
+
+	public DVDPanel(MainFrame frame) {
         //レイアウトに新しいGridLayout(3, 2)
     	setLayout(new GridLayout(3,2));
         //ボタンやフィールド作成
@@ -17,6 +20,8 @@ public class DVDPanel extends JPanel{
     	JTextField titleField = new JTextField();  
     	JButton registerBtn  = new JButton("登録");
     	JButton backBtn =new JButton("TOPへ戻る");
+    	JButton LentBtn = new JButton("貸出一覧");
+    	
     	//登録ボタンが押されたらIDとタイトル
     	registerBtn.addActionListener(e -> {
     		DB.insertDVD(codeField.getText(),titleField.getText());
@@ -24,6 +29,7 @@ public class DVDPanel extends JPanel{
     	});
     	//TOPに戻るボタン
     	backBtn.addActionListener(e -> frame.showPanel("TOP"));
+    	
     	//パネルに部品追加
     	add(new JLabel("DVDコード"));
     	add(codeField);
@@ -31,6 +37,7 @@ public class DVDPanel extends JPanel{
     	add(titleField);
     	add(registerBtn);
     	add(backBtn);
+    	add(LentBtn);
     }
 
 
