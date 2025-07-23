@@ -3,9 +3,9 @@ package DVD_;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class TOPPanel  extends JFrame{
+public class TOPPanel  extends JPanel{
 	  public TOPPanel(MainFrame frame) {
 	       setLayout(new GridLayout(6, 1, 10, 10));
 
