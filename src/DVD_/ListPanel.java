@@ -2,7 +2,6 @@ package DVD_;
 
 import java.awt.BorderLayout;
 import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
