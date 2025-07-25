@@ -16,11 +16,13 @@ public class LendPanel extends JPanel {
     	JTextField CodeField = new JTextField();
     	JButton lendBtn=new JButton("貸出");
     	JButton backBtn=new JButton("TOPへ戻る");
+
     	//DB実行
     	lendBtn.addActionListener(e -> {
         	DB.lendDVD(idField.getText(),( CodeField.getText()));
         	JOptionPane.showMessageDialog(this, "貸出しました。");
         	});
+
         //TOP戻る
     	backBtn.addActionListener(e -> frame.showPanel("TOP"));
         //部品追加
