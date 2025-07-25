@@ -19,10 +19,17 @@ public class DVDPanel extends JPanel{
     	JButton registerBtn  = new JButton("登録");
     	JButton backBtn =new JButton("TOPへ戻る");
     	
-    	//登録ボタンが押されたらIDとタイトル
     	registerBtn.addActionListener(e -> {
-    		DB.insertDVD(codeField.getText(),titleField.getText());
-    		JOptionPane.showMessageDialog(this, "登録しました");
+    	    String code = codeField.getText().trim();
+    	    String title = titleField.getText().trim();
+    	    if (code.isEmpty() || title.isEmpty()) {
+    	        JOptionPane.showMessageDialog(this, "コードとタイトルの両方を入力してください", "エラー", JOptionPane.ERROR_MESSAGE);
+    	        return;
+    	    }
+    	    DB.insertDVD(code, title);
+    	    JOptionPane.showMessageDialog(this, "登録しました");
+    	    codeField.setText(""); // フィールド初期化
+    	    titleField.setText("");
     	});
     	//TOPに戻るボタン
     	backBtn.addActionListener(e -> frame.showPanel("TOP"));
