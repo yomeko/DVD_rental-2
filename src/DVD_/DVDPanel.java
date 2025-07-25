@@ -22,13 +22,20 @@ public class DVDPanel extends JPanel{
     	registerBtn.addActionListener(e -> {
     	    String code = codeField.getText().trim();
     	    String title = titleField.getText().trim();
+
     	    if (code.isEmpty() || title.isEmpty()) {
     	        JOptionPane.showMessageDialog(this, "コードとタイトルの両方を入力してください", "エラー", JOptionPane.ERROR_MESSAGE);
     	        return;
     	    }
+
+    	    if (!code.matches("\\d+")) {
+    	        JOptionPane.showMessageDialog(this, "コードは数字のみで入力してください", "入力エラー", JOptionPane.ERROR_MESSAGE);
+    	        return;
+    	    }
+
     	    DB.insertDVD(code, title);
     	    JOptionPane.showMessageDialog(this, "登録しました");
-    	    codeField.setText(""); // フィールド初期化
+    	    codeField.setText("");
     	    titleField.setText("");
     	});
     	//TOPに戻るボタン
