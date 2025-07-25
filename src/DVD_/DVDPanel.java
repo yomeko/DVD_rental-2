@@ -1,6 +1,5 @@
 package DVD_;
 
-import java.awt.Component;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -10,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class DVDPanel extends JPanel{
-    private static final Component LentBtn = null;
 
 	public DVDPanel(MainFrame frame) {
         //レイアウトに新しいGridLayout(3, 2)
