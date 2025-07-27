@@ -21,7 +21,7 @@ public class LendPanel extends JPanel {
             DB.lendDVD(idField.getText(), CodeField.getText());
             JOptionPane.showMessageDialog(this, "貸出しました。");
         });
-
+//
         // TOP戻る時にDB更新（→更新ボタンがある画面で反映される）
         // DB.getLentDVDs() を呼んでリストを再取得（使い捨てで呼ぶ）
         backBtn.addActionListener(e -> {
