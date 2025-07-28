@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class ListPanel extends JPanel {
-    private JTextArea area;  // クラス変数にして再利用可能に
+    private JTextArea area;
 
     public ListPanel(MainFrame frame) {
         setLayout(new BorderLayout());
@@ -21,29 +21,27 @@ public class ListPanel extends JPanel {
         // 最初の表示
         updateList();
 
-        // ボタン
         JButton updateBtn = new JButton("更新");
         updateBtn.addActionListener(e -> updateList());
 
         JButton TOPbtn = new JButton("TOPに戻る");
         TOPbtn.addActionListener(e -> frame.showPanel("TOP"));
 
-        // 下部パネルにボタンを並べて追加
         JPanel bottomPanel = new JPanel();
         bottomPanel.add(updateBtn);
         bottomPanel.add(TOPbtn);
 
-        // パネルに追加
         add(scrollPane, BorderLayout.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
     }
 
-    // DBから再取得してTextAreaに反映
-    private void updateList() {
-        area.setText(""); // 一度クリア
+    // DBから最新の貸出中DVDリストを取得して表示を更新
+    public void updateList() {
+        area.setText(""); // 表示クリア
+        
         List<String> DVDs = DB.getLentDVDs();
-        for (String DVD : DVDs) {
-            area.append(DVD + "\n");
+        for (String dvd : DVDs) {
+            area.append(dvd + "\n");
         }
     }
 }
