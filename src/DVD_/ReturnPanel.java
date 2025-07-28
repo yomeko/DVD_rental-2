@@ -21,7 +21,10 @@ public class ReturnPanel extends JPanel{
     	JOptionPane.showMessageDialog(this, "返却しました。");
     	});
 	//TOPに戻るボタン
-	backBtn.addActionListener(e -> frame.showPanel("TOP"));
+	backBtn.addActionListener(e -> {
+        DB.getLentDVDs();  // ← この行がDB更新（ListPanelでの再取得に対応）
+        frame.showPanel("TOP");
+    });
 	//パネルに部品の追加
 	add(new JLabel("DVDコード"));
 	add(codeField);
