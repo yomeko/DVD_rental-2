@@ -68,18 +68,19 @@ public class DB {
 	}
 
 	//貸し出し中のDVDリスト
-
 	public static List<String> getLentDVDs(){
-		List<String> dvds = new ArrayList<>();
-		try(Connection conn =DriverManager.getConnection(URL,USER,PASS);
-				Statement st = conn.createStatement();
-				ResultSet rs = st.executeQuery("SELECT code,title FROM dvd WHERE is_lent = true")){
-			while(rs.next()) {
-				dvds.add(rs.getString("code")+"-"+rs.getString("title"));
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return dvds;
+	    List<String> dvds = new ArrayList<>();
+	    try(Connection conn =DriverManager.getConnection(URL,USER,PASS);
+	        Statement st = conn.createStatement();
+	        ResultSet rs = st.executeQuery("SELECT code,title FROM dvd WHERE is_lent = true")) {
+	        
+	        while(rs.next()) {
+	            // 表示形式を「コード: XXX｜タイトル: YYY」に変更
+	            dvds.add("コード: " + rs.getString("code") + "｜タイトル: " + rs.getString("title")); // ← 変更
+	        }
+	    } catch(SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return dvds;
 	}
 }
