@@ -42,16 +42,36 @@ public class DB {
 		}
 	}
 
-	//DVDを貸出状態に更新する処理
+	// DVDを貸出状態に更新する処理（すでに貸出中なら処理しない）
+	public static boolean lendDVD(String id, String code) {
+	    try (Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
 
-	public static void lendDVD(String id, String code) {
-		try(Connection conn =DriverManager.getConnection(URL,USER,PASS);
-				PreparedStatement ps = conn.prepareStatement("UPDATE dvd set is_lent =true WHERE code=?;")){
-			ps.setString(1, code);
-			ps.executeUpdate();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
+	        // まず、そのDVDが貸出中か確認
+	        try (PreparedStatement checkPs = conn.prepareStatement("SELECT is_lent FROM dvd WHERE code = ?")) {
+	            checkPs.setString(1, code);
+	            ResultSet rs = checkPs.executeQuery();
+	            if (rs.next()) {
+	                boolean isLent = rs.getBoolean("is_lent");
+	                if (isLent) {
+	                    return false; // すでに貸出中
+	                }
+	            } else {
+	                return false; // DVDコードが存在しない
+	            }
+	        }
+
+	        // 借りられる場合だけ更新
+	        try (PreparedStatement ps = conn.prepareStatement("UPDATE dvd SET is_lent = true WHERE code = ?")) {
+	            ps.setString(1, code);
+	            ps.executeUpdate();
+	        }
+
+	        return true;
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
 	}
 
 	//DVDを返却済み状態に更新する処理
