@@ -18,23 +18,14 @@ public class LendPanel extends JPanel {
 
         // 貸出ボタンの処理
         lendBtn.addActionListener(e -> {
-            String dvdCode = CodeField.getText();
-            String memberId = idField.getText();
-
-            // すでに貸出中かチェック
-            if (DB.isLentOut(dvdCode)) {
-                JOptionPane.showMessageDialog(this, "このDVDはすでに貸出中です。", "エラー", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // 貸出処理
-            DB.lendDVD(memberId, dvdCode);
+            DB.lendDVD(idField.getText(), CodeField.getText());
             JOptionPane.showMessageDialog(this, "貸出しました。");
         });
 
         // TOP戻る時にDB更新（→更新ボタンがある画面で反映される）
+        // DB.getLentDVDs() を呼んでリストを再取得（使い捨てで呼ぶ）
         backBtn.addActionListener(e -> {
-            DB.getLentDVDs();  // ← 再取得
+            DB.getLentDVDs();  // ← この行がDB更新（ListPanelでの再取得に対応）
             frame.showPanel("TOP");
         });
 
