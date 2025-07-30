@@ -98,10 +98,10 @@ public class DB {
 	    try(Connection conn =DriverManager.getConnection(URL,USER,PASS);
 	        Statement st = conn.createStatement();
 	        ResultSet rs = st.executeQuery("SELECT code,title FROM dvd WHERE is_lent = true")) {
-	        
+
 	        while(rs.next()) {
 	            // 表示形式を「コード: XXX｜タイトル: YYY」に変更
-	            dvds.add("コード: " + rs.getString("code") + "｜タイトル: " + rs.getString("title")); // ← 変更
+	            dvds.add("会員コード: " + rs.getString("code") + "｜タイトル: " + rs.getString("title")); // ← 変更
 	        }
 	    } catch(SQLException e) {
 	        e.printStackTrace();
