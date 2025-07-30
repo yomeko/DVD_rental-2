@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 public class DB {
 	//DBアクセス＆ユーザー名とパスワード
 
@@ -18,38 +20,49 @@ public class DB {
 
 	// 会員の登録（idとnameが空またはnullならエラー）
 	public static void insertMember(String id, String name) {
-	    if (id == null || id.trim().isEmpty() || name == null || name.trim().isEmpty()) {
-	        throw new IllegalArgumentException("会員IDと名前は必須です。");
+	    if (id == null || id.isEmpty() || name == null || name.isEmpty()) {
+	        JOptionPane.showMessageDialog(null, "IDと名前の両方を入力してください。", "入力エラー", JOptionPane.ERROR_MESSAGE);
+	        return;
 	    }
 
 	    try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
-	         PreparedStatement ps = conn.prepareStatement("INSERT INTO member(id,name) VALUES(?,?)")) {
+	         PreparedStatement ps = conn.prepareStatement("INSERT INTO member(id, name) VALUES(?, ?)")) {
 	        ps.setString(1, id);
 	        ps.setString(2, name);
 	        ps.executeUpdate();
 	    } catch (SQLException e) {
-	        e.printStackTrace();
+	        JOptionPane.showMessageDialog(null, "会員登録に失敗しました。", "登録エラー", JOptionPane.ERROR_MESSAGE);
+	        e.printStackTrace(); // ← 開発中だけ残して、完成後に消してOK
 	    }
 	}
 
 	// DVDの登録（codeが重複していたらエラー）
 	public static void insertDVD(String code, String title) {
+	    if (code == null || code.isEmpty()) {
+	        JOptionPane.showMessageDialog(null, "DVDコードを入力してください。", "入力エラー", JOptionPane.ERROR_MESSAGE);
+	        return;
+	    }
+
 	    try (Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
-	        // 事前にcodeの重複チェック
+	        // コード重複チェック
 	        PreparedStatement check = conn.prepareStatement("SELECT COUNT(*) FROM dvd WHERE code = ?");
 	        check.setString(1, code);
 	        ResultSet rs = check.executeQuery();
 	        rs.next();
-	        if (rs.getInt(1) > 0) {
-	            throw new SQLException("同じコードのDVDが既に登録されています。"); // ← 重複エラー
+	        int count = rs.getInt(1);
+	        if (count > 0) {
+	            JOptionPane.showMessageDialog(null, "このコードはすでに登録されています。", "登録エラー", JOptionPane.ERROR_MESSAGE);
+	            return;
 	        }
 
 	        // 登録処理
-	        PreparedStatement ps = conn.prepareStatement("INSERT INTO dvd(code,title,is_lent) VALUES(?,?,false)");
+	        PreparedStatement ps = conn.prepareStatement("INSERT INTO dvd(code, title, is_lent) VALUES(?, ?, false)");
 	        ps.setString(1, code);
 	        ps.setString(2, title);
 	        ps.executeUpdate();
+
 	    } catch (SQLException e) {
+	        JOptionPane.showMessageDialog(null, "DVD登録に失敗しました。", "登録エラー", JOptionPane.ERROR_MESSAGE);
 	        e.printStackTrace();
 	    }
 	}
